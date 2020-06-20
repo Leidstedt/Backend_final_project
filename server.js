@@ -2,11 +2,11 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import mongoose from 'mongoose'
-import testfile from './data/testfile.json'
-import Person from './model/testParticipant.js'
+import participants from './data/participants.json'
+import Person from './model/modelParticipant.js'
 
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-backendtest"
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-backend-finalproject"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
@@ -17,7 +17,7 @@ if (process.env.RESET_DATABASE) {
 
   const seedDatabase = async () => {
       await Person.deleteMany()
-      await testfile.forEach((person) => new Person(person).save())
+      await participants.forEach((person) => new Person(person).save())
   }
   seedDatabase()
 }
@@ -61,7 +61,7 @@ app.get('/participants', async (req, res) => {
     res.status(404).json({ message: `Error` })
   }
 });
-
+/*
 // Route for category
 app.get('/participants/category/:category', async ( req, res ) => {
   const { category } = req.params
@@ -74,7 +74,7 @@ app.get('/participants/category/:category', async ( req, res ) => {
   }
 })
 
-
+*/
 
 // Start the server
 app.listen(port, () => {
