@@ -64,7 +64,7 @@ app.get('/participants', async (req, res) => {
 // Route for subprojct
 app.get('/participants/subproject/:subproject', async ( req, res ) => {
   const { subproject } = req.params
-  const participantsByCategory = await Person.find({ subproject: subproject })
+  const participantsBySubproject = await Person.find({ subproject: subproject })
 
   if (participantsBySubproject) {
     res.json(participantsBySubproject)
