@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 // ROUTES
 app.get('/', (req, res) => {
   res.send(`
-  <h1>Test Database</h1>
+  <h1>Database</h1>
   `)
 })
 
@@ -61,20 +61,18 @@ app.get('/participants', async (req, res) => {
     res.status(404).json({ message: `Error` })
   }
 });
-/*
-// Route for category
-app.get('/participants/category/:category', async ( req, res ) => {
-  const { category } = req.params
-  const participantsByCategory = await Person.find({ category: category })
+// Route for subprojct
+app.get('/participants/subproject/:subproject', async ( req, res ) => {
+  const { subproject } = req.params
+  const participantsByCategory = await Person.find({ subproject: subproject })
 
-  if (participantsByCategory) {
-    res.json(participantsByCategoryD)
+  if (participantsBySubproject) {
+    res.json(participantsBySubproject)
   } else {
     res.status(404).json({ message: `Error.` })
   }
 })
 
-*/
 
 // Start the server
 app.listen(port, () => {
